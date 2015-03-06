@@ -48,28 +48,21 @@ void initKeypad(void){
 char scanKeypad(void){
     char key = 'a';
 
-    //scanRow(1);
-    ODCAbits.ODA0=1;   //RA0 (row1) odc enabled.
-    ODCAbits.ODA1=0;    //RA1 (row2) odc disabled.
-    ODCBbits.ODB2=0;    //RB2 (row3) odc disabled.
-    ODCBbits.ODB3=0;    //RB3 (row4) odc disabled.
-    if(COL1PORT==PRESSED)
-          key='1';
+   scanRow(1);
+   if(COL1PORT==PRESSED)
+         return key='1';
     else if(COL2PORT==PRESSED)
-         key='2';
+        return key='2';
     else if(COL3PORT==PRESSED)
-         key='3';
+        return key='3';
     else
     {
         key='b';
         return key;
     }
+   
 
-    //scanRow(2);
-    ODCAbits.ODA0=0;   //RA0 (row1) odc disabled.
-    ODCAbits.ODA1=1;    //RA1 (row2) odc enabled.
-    ODCBbits.ODB2=0;    //RB2 (row3) odc disabled.
-    ODCBbits.ODB3=0;    //RB3 (row4) odc disabled.
+    scanRow(2);
     if(COL1PORT==PRESSED)
          key='4';
     else if(COL2PORT==PRESSED)
@@ -82,11 +75,7 @@ char scanKeypad(void){
         return key;
     }
 
-    //scanRow(3);
-    ODCAbits.ODA0=0;   //RA0 (row1) odc disabled.
-    ODCAbits.ODA1=0;    //RA1 (row2) odc disabled.
-    ODCBbits.ODB2=1;    //RB2 (row3) odc enabled.
-    ODCBbits.ODB3=0;    //RB3 (row4) odc disabled.
+    scanRow(3);
     if(COL1PORT==PRESSED)
          key='7';
     else if(COL2PORT==PRESSED)
@@ -99,11 +88,8 @@ char scanKeypad(void){
         return key;
     }
 
-    //scanRow(4);
-    ODCAbits.ODA0=0;   //RA0 (row1) odc disabled.
-    ODCAbits.ODA1=0;    //RA1 (row2) odc disabled.
-    ODCBbits.ODB2=0;    //RB2 (row3) odc disabled.
-    ODCBbits.ODB3=1;    //RB3 (row4) odc enabled.
+    scanRow(4);
+
     if(COL1PORT==PRESSED)
          key='*';
     else if(COL2PORT==PRESSED)
@@ -121,32 +107,35 @@ char scanKeypad(void){
 
 void scanRow(int row)
 {
+    IEC1bits.CNIE = 0;
     if(row==1)
     {
-    ODCAbits.ODA0=1;   //RA0 (row1) odc enabled.
-    ODCAbits.ODA1=0;    //RA1 (row2) odc disabled.
-    ODCBbits.ODB2=0;    //RB2 (row3) odc disabled.
-    ODCBbits.ODB3=0;    //RB3 (row4) odc disabled.
+        ROW1LAT=1;
+        ROW2LAT=0;
+        ROW3LAT=0;
+        ROW4LAT=0;
     }
     else if(row==2)
     {
-    ODCAbits.ODA0=0;   //RA0 (row1) odc disabled.
-    ODCAbits.ODA1=1;    //RA1 (row2) odc enabled.
-    ODCBbits.ODB2=0;    //RB2 (row3) odc disabled.
-    ODCBbits.ODB3=0;    //RB3 (row4) odc disabled.
+        ROW1LAT=0;
+        ROW2LAT=1;
+        ROW3LAT=0;
+        ROW4LAT=0;
     }
     else if(row==3)
     {
-    ODCAbits.ODA0=0;   //RA0 (row1) odc disabled.
-    ODCAbits.ODA1=0;    //RA1 (row2) odc disabled.
-    ODCBbits.ODB2=1;    //RB2 (row3) odc enabled.
-    ODCBbits.ODB3=0;    //RB3 (row4) odc disabled.
+        ROW1LAT=0;
+        ROW2LAT=0;
+        ROW3LAT=1;
+        ROW4LAT=0;
     }
     else if(row==4)
     {
-    ODCAbits.ODA0=0;   //RA0 (row1) odc disabled.
-    ODCAbits.ODA1=0;    //RA1 (row2) odc disabled.
-    ODCBbits.ODB2=0;    //RB2 (row3) odc disabled.
-    ODCBbits.ODB3=1;    //RB3 (row4) odc enabled.
+        ROW1LAT=0;
+        ROW2LAT=0;
+        ROW3LAT=0;
+        ROW4LAT=1;
     }
+    IEC1bits.CNIE = 1;
 }
+
