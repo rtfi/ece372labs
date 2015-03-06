@@ -17,6 +17,11 @@
 #define ROW3TRIS TRISBbits.TRISB2
 #define ROW4TRIS TRISBbits.TRISB3
 
+#define ROW1LAT LATAbits.LATA0
+#define ROW2LAT LATAbits.LATA1
+#define ROW3LAT LATBbits.LATB2
+#define ROW4LAT LATBbits.LATB3
+
 #define COL1PORT PORTBbits.RB8      //defined port bits for input.
 #define COL2PORT PORTBbits.RB5
 #define COL3PORT PORTBbits.RB10
@@ -27,5 +32,6 @@
 void initKeypad(void);
 char scanKeypad(void);
 void scanRow(int row);
+void test_scanRow(int row);
 
 #endif	/* KEYPAD_H */

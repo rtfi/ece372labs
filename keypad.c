@@ -48,13 +48,14 @@ void initKeypad(void){
 char scanKeypad(void){
     char key = 'a';
 
+    
    scanRow(1);
    if(COL1PORT==PRESSED)
-         return key='1';
+         return '1';
     else if(COL2PORT==PRESSED)
-        return key='2';
+        return '2';
     else if(COL3PORT==PRESSED)
-        return key='3';
+        return '3';
     else
     {
         key='b';
@@ -64,11 +65,11 @@ char scanKeypad(void){
 
     scanRow(2);
     if(COL1PORT==PRESSED)
-         key='4';
+         return '4';
     else if(COL2PORT==PRESSED)
-         key='5';
+         return '5';
     else if(COL3PORT==PRESSED)
-         key='6';
+         return '6';
     else
     {
         key='c';
@@ -77,11 +78,11 @@ char scanKeypad(void){
 
     scanRow(3);
     if(COL1PORT==PRESSED)
-         key='7';
+         return '7';
     else if(COL2PORT==PRESSED)
-         key='8';
+         return '8';
     else if(COL3PORT==PRESSED)
-         key='9';
+         return '9';
     else
     {
         key='d';
@@ -91,22 +92,27 @@ char scanKeypad(void){
     scanRow(4);
 
     if(COL1PORT==PRESSED)
-         key='*';
+         return '*';
     else if(COL2PORT==PRESSED)
-         key='0';
+         return '0';
     else if(COL3PORT==PRESSED)
-         key='#';
+         return '#';
     else
     {
         key='e';
         return key;
     }
     
-    return key;
 }
 
 void scanRow(int row)
 {
+
+   /* ROW1LAT=1;
+    ROW2LAT=0;
+    ROW3LAT=0;
+    ROW4LAT=0;*/
+   
     IEC1bits.CNIE = 0;
     if(row==1)
     {
