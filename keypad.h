@@ -8,6 +8,8 @@
 #ifndef KEYPAD_H
 #define	KEYPAD_H
 
+#include "p24fj64ga002.h"
+
 #define COL1TRIS TRISBbits.TRISB8    //left column
 #define COL2TRIS TRISBbits.TRISB5    //middle column
 #define COL3TRIS TRISBbits.TRISB10    //right column
