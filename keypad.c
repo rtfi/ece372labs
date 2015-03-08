@@ -127,6 +127,6 @@ void scanRow(int row)
         ROW4LAT=0;
        }
     IEC1bits.CNIE = 1;
-    delayUs(5);
+    delayUs(100);
 }
 
