@@ -30,21 +30,20 @@ typedef enum stateTypeEnum{
 } stateType;
 
 volatile stateType currState=wait;
-volatile stateType nextState;
 volatile char key;
 
 int main(void)
 {
-
+    initKeypad();
     initLCD();
     //printStringLCD("Hello");
-    initKeypad();
+    
     int CursorPosition=0;
     while(1){
         switch(currState)
         {
             case wait:
-                //IEC1bits.CNIE=1;    //enable cn when we wait for a key press
+                
                 break;
 
             case debouncePress:
@@ -53,10 +52,10 @@ int main(void)
                 break;
 
             case scanRows:
-                //IEC1bits.CNIE=0;    //disable cn when we scan the rows.
+                
                 key=scanKeypad();
                 currState=wait;
-                //IEC1bits.CNIE=1;    //enable cn when we are done scanning the rows.
+                
                 break;
                 
             case debounceRelease:
