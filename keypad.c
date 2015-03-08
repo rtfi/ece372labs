@@ -32,7 +32,7 @@ void initKeypad(void){
     CNEN2bits.CN22IE=1; //turn on cn for RB8.
     CNEN2bits.CN27IE=1; //turn on cn for RB5.
 
-    delayUs(5000);
+    //delayUs(5000);
     
 }
 
@@ -127,6 +127,6 @@ void scanRow(int row)
         ROW4LAT=0;
        }
     IEC1bits.CNIE = 1;
-    delayUs(100);
+    delayUs(500);
 }
 

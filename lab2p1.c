@@ -52,10 +52,8 @@ int main(void)
                 break;
 
             case scanRows:
-                
                 key=scanKeypad();
                 currState=wait;
-                
                 break;
                 
             case debounceRelease:
