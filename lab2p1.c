@@ -10,6 +10,7 @@
 #include "lcd.h"
 #include "timer.h"
 #include "keypad.h"
+#include <string.h>
 #include <stdio.h>
 
 #define DEBOUNCE_DELAY_US 5000
@@ -31,6 +32,7 @@ typedef enum stateTypeEnum{
 
 volatile stateType currState=wait;
 volatile char key;
+volatile char currPW[5];
 
 int main(void)
 {

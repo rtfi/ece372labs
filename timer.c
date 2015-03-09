@@ -10,7 +10,7 @@
 #include <stdio.h>
 
 #define FCY 14745600
-#define oneUS 14//time for one microsecond using ps of 8
+#define oneUS 14//time for one microsecond using ps of 1
 
 void initTMR2(){
     PR2 = ((.01*FCY)/256)-1;
@@ -24,6 +24,7 @@ void initTMR2(){
 //Uses timer 1
 void delayUs(unsigned int delay){
     //MAX DELAY: ~65500us = 65.5ms
+    //NEW MAX DELAY: ~4444us = 4.444ms
     //reset timer to 0 just in case
     TMR1 = 0;
 
